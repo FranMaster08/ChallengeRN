@@ -1,0 +1,63 @@
+{% extends "plantillabase.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <table class="table">
+                <thead class="table-dark">
+                    <th>Id</th>
+                    <th>Concepto</th>
+                    <th>Monto</th>
+                    <th>Tipo Ingreso</th>
+                </thead>
+                <tbody>
+                    {% for item in db %}
+                        <tr>
+                            <td>{{item.id}}</td>
+                            <td>{{item.concepto}}</td>
+                            <td>{{item.fecha}}</td>
+                            <td>{{item.monto}}</td>
+                        </tr>                       
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-3">
+
+            <div class="card p-4" >
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="Concepto" class="form-label">Concepto</label>
+                        <input type="text" name='Concepto' class="form-control" id="Concepto"
+                            placeholder="Ingrese Concepto">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Monto" class="form-label">Monto</label>
+                        <input type="number" name='Monto' class="form-control" id="Monto" placeholder="Ingrese Monto">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Fecha" class="form-label">Fecha</label>
+                        <input type="date" name='Monto' class="form-control" id="Fecha" placeholder="Ingrese Fecha">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Fecha" class="form-label">Fecha</label>
+                        <select class="form-select" id="Fecha" aria-label="Default select example">
+                            <option selected>Tipo Operacion</option>
+                            <option value="1">Ingreso</option>
+                            <option value="2">Egreso</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">                       
+                        <input type="submit" value="Enviar" class="form-control btn btn-success" >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

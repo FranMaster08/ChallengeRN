@@ -1,13 +1,15 @@
+const database=require('../db/database')
 class NavController{
 
     static home=(req,res)=>{
-        res.status(200).json({mensaje:'estas navegando a home'})
+        res.render('Home.html')
     }
     static AbmOp=(req,res)=>{
-        res.status(200).json({mensaje:'estas navegando a Abm de Operaciones'})
+
+        res.render('AbmOperaciones.html',{db:database})
     }
     static login=(req,res)=>{
-        res.status(200).json({mensaje:'estas navegando a el login'})
+        res.render('Login.html')
     }  
 
 }

@@ -3,6 +3,8 @@ require('dotenv').config()
 
 //1) crear el objeto de express [app]
 const express =require('express')
+const path=require('path')
+const nunjucks=require('nunjucks')
 const app=express()
 
 
@@ -17,11 +19,24 @@ app.use(express.urlencoded({extended:false})) //prepara el server para formulari
 //     res.status(200).json({mensaje:'Hola Mundo'})
 // })
 
-//3.1) agrego los ruteros
+
+//INICIO OPCIONAL
+//3.1 [OPCIONAL] configuramos el motor de vistas (nunjucks ,pug,ejs,handlebars (hbs))
+//3.1.1 Exportamos la carpeta public
+app.use(express.static(path.resolve(__dirname,'/public')))
+//3.1.2
+app.set('view engine')
+nunjucks.configure(path.resolve(__dirname,'./views'),{
+    autoescape:false,
+    express:app
+})
+//FIN OPCIONAL
+
+//3.2) agrego los ruteros
 
 //http://localhost:5000/nav/
 
-app.use('/nav',require('./routes/navigation.routes'))
+app.use('/',require('./routes/navigation.routes'))
 app.use('/user',require('./routes/usuarios.routes'))
 
 
