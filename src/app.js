@@ -13,9 +13,16 @@ app.use(express.urlencoded({extended:false})) //prepara el server para formulari
 //3) Crear las rutas
 //rutas [GET] Verbo
 //http://localhost:[PUERTO]/
-app.get('/',(req,res)=>{
-    res.status(200).json({mensaje:'Hola Mundo'})
-})
+// app.get('/',(req,res)=>{
+//     res.status(200).json({mensaje:'Hola Mundo'})
+// })
+
+//3.1) agrego los ruteros
+
+//http://localhost:5000/nav/
+
+app.use('/nav',require('./routes/navigation.routes'))
+app.use('/user',require('./routes/usuarios.routes'))
 
 
 //4) Poner a escuchar
